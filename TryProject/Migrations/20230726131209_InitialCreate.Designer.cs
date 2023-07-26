@@ -12,7 +12,7 @@ using TryProject.Data;
 namespace TryProject.Migrations
 {
     [DbContext(typeof(TryProjectContext))]
-    [Migration("20230726130527_InitialCreate")]
+    [Migration("20230726131209_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
