@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace TryProjectFramework
+namespace TryProjectNetFramework
 {
     public class BundleConfig
     {
