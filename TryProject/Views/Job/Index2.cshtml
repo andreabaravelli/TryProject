@@ -6,9 +6,6 @@
 <h1>Index2</h1>
 
     <script type="text/javascript">
-    $(document).ready(function () {
-        bindDatatable();
-    });
        
         new DataTable('#example', {
             ajax: 'Job/Index2',
@@ -22,13 +19,13 @@
 
 
 
-<table id="example" class="display" style="width:100%">
+@*<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
             </tr>
-        </thead> 
+        </thead> *@
   
    
     @foreach (var job in Model)
@@ -40,11 +37,11 @@
         </tr>
     }
     
-    <tfoot>
+   @* <tfoot>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
             </tr>
         </tfoot>
-    </table>
+    </table>*@
 
