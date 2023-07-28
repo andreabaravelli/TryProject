@@ -1,43 +1,50 @@
-﻿
+﻿@model IEnumerable<TryProject.Models.Job>
 @{
     ViewData["Title"] = "Index2";
 }
 
 <h1>Index2</h1>
-<script>
-"new" "DataTable('#example'",
-  {
-    "ajax": "data/objects.txt",
-    "columns": [
-      { "data": "name" },
-      { "data": "position" },
-      { "data": "office" },
-      { "data": "extn" },
-      { "data": "start_date" },
-      { "data": "salary" }
-    ]
-  }
-    ");",
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        bindDatatable();
+    });
+       
+        new DataTable('#example', {
+            ajax: 'Job/Index2',
+           
+            columns: [
+                { data: 'Name' }
+                { data: 'Id' },
+            ]
+        });
     </script>
+
+
+
 <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
             </tr>
-        </thead>
-        <tfoot>
+        </thead> 
+  
+   
+    @foreach (var job in Model)
+    {
+
+        <tr>
+            <td>@job.Id</td>
+            <td>@job.Name</td>
+        </tr>
+    }
+    
+    <tfoot>
             <tr>
+                <th>Id</th>
                 <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
             </tr>
         </tfoot>
     </table>
+
