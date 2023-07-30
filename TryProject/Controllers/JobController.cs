@@ -56,17 +56,7 @@ namespace TryProject.Controllers
         }
 
         
-        public IActionResult GetJobs()
-        {
-            List<Job> jobs = new List<Job>
-            {
-                new Job{ Name="job4"},
-                new Job{Name="job5"},
-                new Job{Name= "job6"}
-            };
-            return Json(jobs);
-            
-        }
+       
 
         // GET: Job/Create
         public IActionResult Create()

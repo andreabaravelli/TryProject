@@ -4,28 +4,40 @@
 }
 
 <h1>Index2</h1>
+<body>
+   
+  
 
-    <script type="text/javascript">
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });</script>
+
+<script>let table = new DataTable('#example');</script>
+@*<script type="text/javascript">
        
         new DataTable('#example', {
-            ajax: 'Job/Index2',
+            ajax:{
+                    url:"appsettings.json",
+                    dataSrc:"data"
+            },
            
             columns: [
                 { data: 'Name' }
                 { data: 'Id' },
             ]
         });
-    </script>
+    </script>*@
 
 
 
-@*<table id="example" class="display" style="width:100%">
+<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
             </tr>
-        </thead> *@
+        </thead> 
   
    
     @foreach (var job in Model)
@@ -37,11 +49,12 @@
         </tr>
     }
     
-   @* <tfoot>
+    <tfoot>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
             </tr>
         </tfoot>
-    </table>*@
+    </table>
 
+</body>
