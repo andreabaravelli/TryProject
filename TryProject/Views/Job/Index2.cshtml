@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TryProject.Models.Job>
+﻿@model IEnumerable<Job>
 @{
     ViewData["Title"] = "Index2";
 }
@@ -8,51 +8,55 @@
    
   
 
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable();
-    });</script>
 
-<script>let table = new DataTable('#example');</script>
-@*<script type="text/javascript">
+@section scripts{
+    
+<script type="text/javascript">
        
-        new DataTable('#example', {
-            ajax:{
-                    url:"appsettings.json",
-                    dataSrc:"data"
-            },
-           
-            columns: [
-                { data: 'Name' }
-                { data: 'Id' },
-            ]
-        });
-    </script>*@
+       
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    //columnDefs:[{
+                    //   "defaultContent": "-",
+                    //   "targets":  "_all"
+                    //}],
+                    "ajax": {
+                        "url": "@Url.Action("GetJson", "Job")",
+                        "dataSrc": "data" // Il nome dell'array che contiene i dati nell'oggetto JSON restituito
+                    },
+                    "columns": [
+                        { "data": "Name" },
+                        { "data": "Id" },
+                        
+                    ]
+                });
+            });
+    </script>
+    }
 
 
 
 <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
+                <th>Id</th>
             </tr>
         </thead> 
-  
    
-    @foreach (var job in Model)
+  @*  @foreach (var job in Model)
     {
 
         <tr>
             <td>@job.Id</td>
             <td>@job.Name</td>
         </tr>
-    }
+    }*@
     
     <tfoot>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
+                <th>Id</th>
             </tr>
         </tfoot>
     </table>

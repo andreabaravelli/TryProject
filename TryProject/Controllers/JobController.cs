@@ -46,17 +46,27 @@ namespace TryProject.Controllers
         }
         public IActionResult Index2()
         {
-            List<Job> jobs = new List<Job>
-            {
-                new Job{ Name="job4"},
-                new Job{Name="job5"},
-                new Job{Name= "job6"}
-            };
-            return View(jobs);
+          
+            return View();
+           
         }
 
-        
-       
+      public IActionResult GetJson()
+        {
+            List<Job> jobs = GetJobs();
+            return Json( new { data = jobs } );
+        }
+       public List<Job> GetJobs()
+        {
+            List<Job> jobs = new List<Job>
+            {
+                new Job{ Name="job4", Id=1},
+                new Job{Name="job5", Id=2},
+                new Job{Name= "job6", Id=3}
+            };
+
+            return jobs;
+        }
 
         // GET: Job/Create
         public IActionResult Create()
