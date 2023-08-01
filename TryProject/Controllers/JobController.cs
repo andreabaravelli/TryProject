@@ -46,8 +46,8 @@ namespace TryProject.Controllers
         }
         public IActionResult Index2()
         {
-          
-            return View();
+            var jobs = GetJobs();
+            return View(jobs);
            
         }
 

@@ -25,8 +25,8 @@
                         "dataSrc": "data" // Il nome dell'array che contiene i dati nell'oggetto JSON restituito
                     },
                     "columns": [
-                        { "data": "Name" },
-                        { "data": "Id" },
+                        { "Data": "Name" },
+                        { "Data": "Id" },
                         
                     ]
                 });
@@ -44,14 +44,14 @@
             </tr>
         </thead> 
    
-  @*  @foreach (var job in Model)
+    @foreach (var job in Model)
     {
 
         <tr>
-            <td>@job.Id</td>
             <td>@job.Name</td>
+            <td>@job.Id</td>
         </tr>
-    }*@
+    }
     
     <tfoot>
             <tr>
