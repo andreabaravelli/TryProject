@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TryProject.Data;
 using TryProject.Models;
+using static TryProject.Models.Job;
 
 namespace TryProject.Controllers
 {
@@ -60,11 +61,10 @@ namespace TryProject.Controllers
         {
             List<Job> jobs = new List<Job>
             {
-                new Job{ Name="job4", Id=1},
-                new Job{Name="job5", Id=2},
-                new Job{Name= "job6", Id=3}
+                new Job{Name="job4", Id=1, status=Job.Status.execute.ToString("G") },
+                new Job{Name="job5", Id=2, status=Job.Status.execute.ToString("G")},
+                new Job{Name="job6", Id=3, status=Job.Status.stop.ToString("G")}
             };
-
             return jobs;
         }
 

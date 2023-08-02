@@ -11,52 +11,77 @@
 
 @section scripts{
     
+
 <script type="text/javascript">
-       
+
        
             $(document).ready(function () {
                 $('#example').DataTable({
-                    //columnDefs:[{
-                    //   "defaultContent": "-",
-                    //   "targets":  "_all"
-                    //}],
-                    "ajax": {
-                        "url": "@Url.Action("GetJson", "Job")",
-                        "dataSrc": "data" // Il nome dell'array che contiene i dati nell'oggetto JSON restituito
-                    },
-                    "columns": [
-                        { "Data": "Name" },
-                        { "Data": "Id" },
-                        
-                    ]
-                });
-            });
+                    columnDefs:[{
+                        "targets": '_all',
+                       "defaultContent": '<button>click</button>'
+                       
+                    }],
+                    "serverSide": false,
+                    "pageLength": 10,
+                    "paging":true,
+                    "scrollX":true,
+                    ajax:'@Url.Action("GetJson", "Job")',
+                         // Il nome dell'array che contiene i dati nell'oggetto JSON restituito
+                    columns: [
+                        //"name": "Id",
+                        //"searchable": false,
+                        //"sortable":false,
+                        //"className": "center",
+                      
+                        { "data": "name" },
+                        { "data": "id" },
+                        {"data":"status",
+                    render: function(data,type,row){
+
+                                var btn = '<button class="btn btn-primary" data-status="' + data + '">' + data + '</button>';
+
+                                $(document).on('click', 'button', function () {
+                                    var status = $(this).data('status');
+
+                                    if (status === "execute") {
+                                        status = "stop";
+                                    } else {
+                                        status = "execute";
+                                    }
+
+                                    $(this).data('status', status);
+                                    $(this).text(status);
+                                });
+
+                                return btn;
+              }
+            }
+          ]
+       });
+     });
+           
     </script>
     }
 
-
+    
 
 <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Id</th>
+                <th>Status</th>
             </tr>
         </thead> 
-   
-    @foreach (var job in Model)
-    {
+       
 
-        <tr>
-            <td>@job.Name</td>
-            <td>@job.Id</td>
-        </tr>
-    }
     
     <tfoot>
             <tr>
                 <th>Name</th>
                 <th>Id</th>
+                <th>Status</th>
             </tr>
         </tfoot>
     </table>
